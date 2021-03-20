@@ -5,8 +5,8 @@ const theme = {
 		textLightest: "#b8b8b8",
 		background: "#E5E5E5",
 		backgroundDark: "#222222",
-		BDMBlue: "#75CAC9",
-		BDMOrange: "#f06546",
+		hightlight: "#75CAC9",
+		hightlight2: "#f06546",
 	},
 	transitions: {
 		normal: "0.2s ease-out",
