@@ -48,7 +48,6 @@ const GlobalStyles = createGlobalStyle`
     text-decoration: none;
     font: inherit;
     font-size: 1.4rem;
-    text-transform: uppercase;
     font-weight: 500;
   }
   button {
