@@ -5,7 +5,10 @@ import { createGlobalStyle } from "styled-components";
 const GlobalStyles = createGlobalStyle`
   /* RESET CSS */
   ${reset}
-  /* BASE STYLES */
+
+
+
+  /* BASE Reset */
   *,
   *::before,
   *::after {
@@ -18,6 +21,12 @@ const GlobalStyles = createGlobalStyle`
     scroll-behavior: smooth;
     overflow-x: hidden;
   }
+  /* End BASE Reset */
+
+
+
+
+  /* Scrollbar Reset */
   ::-webkit-scrollbar {
     width: 11px;
   }
@@ -29,6 +38,11 @@ const GlobalStyles = createGlobalStyle`
     border-radius: 6px;
     border: 3px solid #f7f7f7;
   }
+  /* End Scrollbar Reset */
+
+
+
+  /* Global styles */
   body {
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
@@ -39,10 +53,12 @@ const GlobalStyles = createGlobalStyle`
     scrollbar-width: thin;
     scrollbar-color: ${theme.colors.textLightest} #f7f7f7;
   }
+
   input {
     border: none;
     font: inherit;
   }
+
   a {
     display: inline-block;
     text-decoration: none;
@@ -50,6 +66,7 @@ const GlobalStyles = createGlobalStyle`
     font-size: 1.4rem;
     font-weight: 500;
   }
+
   button {
     display: inline-block;
     border: none;
@@ -57,18 +74,22 @@ const GlobalStyles = createGlobalStyle`
     cursor: pointer;
     background-color: transparent;
   }
+
   img {
     display: block;
     max-width: 100%;
   }
+
   h1 {
     font-size: 6rem;
   }
+
   h2 {
     font-weight: bold;
     font-size: 3rem;
     line-height: 1.2;
   }
+
   h5 {
     font-weight: bold;
 		font-size: 1.5rem;
@@ -76,23 +97,41 @@ const GlobalStyles = createGlobalStyle`
     color: ${theme.colors.textLight};
 		margin-bottom: 0.5rem;
   }
+
   h4 {
     font-size: 2.5rem;
     line-height: 1.7;
   }
+
   p {
     font-size: 1.2rem;
     line-height: 1.25;
   }
+
   strong {
     font-weight: 500;
   }
-  /* Focus styles */
+
+  button {
+    transition: ${theme.transitions.normal};
+    &:hover {
+      transform: scale(1.05)
+    }
+    &:active{
+      transform: scale(0.95)
+    }
+  }
+
   a, button, input, textarea {
     &:focus, &:active {
       outline: 1px solid ${theme.colors.background};
     }
   }
+  /* End Global styles */
+
+
+
+
   /* REACT TOSTIFY STYLE OVERWRITE */
   .Toastify__toast{
     padding: 2rem;
@@ -106,7 +145,7 @@ const GlobalStyles = createGlobalStyle`
   }
   .Toastify__progress-bar--default {
     background: ${theme.colors.BDMOrange};
-    background: linear-gradient(90deg, ${theme.colors.BDMBlue} 5%, ${theme.colors.BDMOrange} 95%);
+    background: linear-gradient(90deg, ${theme.colors.highlight} 5%, ${theme.colors.highlight2} 95%);
   }
   .Toastify__bounce-enter--top-right, .Toastify__bounce-enter--bottom-right {
     animation-name: Toastify__bounceInRight--modified;

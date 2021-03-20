@@ -11,7 +11,6 @@ function MyApp({ Component, pageProps }) {
 		<ThemeProvider theme={theme}>
 			<GlobalStyles />
 			<Component {...pageProps} />
-
 			<ToastContainer autoClose={2500} />
 		</ThemeProvider>
 	);

@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-
 import { toast } from "react-toastify";
 
 import { addurl, listUrls } from "@lib/api";
@@ -20,14 +19,19 @@ const useUrls = () => {
 	};
 
 	const handleSubmit = async evt => {
+		setUrlInput("");
 		evt.preventDefault();
+
+		const trimmedUrl = urlInput.endsWith("/") ? urlInput.slice(0, urlInput.length - 1) : urlInput;
 		try {
-			if (Object.values(urls).find(url => url === urlInput)) {
+			if (Object.values(urls).find(url => url === trimmedUrl)) {
 				throw new Error("That URL is already shortened.");
 			}
-			const newData = await addurl({ url: urlInput });
+
+			const newData = await addurl({ url: trimmedUrl });
 
 			if (!newData) return;
+
 			setUrls(newData);
 		} catch (error) {
 			toast(error.message);
@@ -36,9 +40,9 @@ const useUrls = () => {
 
 	return {
 		urls,
-		setUrlInput,
 		handleChange,
 		handleSubmit,
+		urlInput,
 	};
 };
 

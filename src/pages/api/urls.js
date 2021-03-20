@@ -26,7 +26,7 @@ export default async function handler(req, res) {
 		const { url } = JSON.parse(req.body);
 		const data = JSON.parse(fs.readFileSync(DB));
 		const shortenedUrl = `${APP_DOMAIN}${nanoid(10)}`;
-		const newData = { ...data, [shortenedUrl]: url };
+		const newData = { [shortenedUrl]: url, ...data };
 		fs.writeFileSync(DB, JSON.stringify(newData));
 		return res.status(200).json(newData);
 	}
