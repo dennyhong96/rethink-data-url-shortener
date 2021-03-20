@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 export default function CustomPaginationActionsTable() {
 	const [urls, setUrls] = useState({});
@@ -8,11 +9,9 @@ export default function CustomPaginationActionsTable() {
 	useEffect(() => {
 		(async () => {
 			const data = await fetch("/api/urls").then(res => res.json());
-			setUrls({ data });
+			setUrls(data);
 		})();
 	}, []);
-
-	console.log({ urls });
 
 	const handleChange = evt => {
 		setUrlInput(evt.target.value);
@@ -24,14 +23,37 @@ export default function CustomPaginationActionsTable() {
 			method: "POST",
 			body: JSON.stringify({ url: urlInput }),
 		}).then(res => res.json());
-		console.log(data);
+		setUrls(data);
 	};
 
 	return (
-		<form onSubmit={handleSubmit}>
-			<h2>Under a url you would like to shorten</h2>
-			<input value={urlInput} onChange={handleChange} />
-			<button>Shorten</button>
-		</form>
+		<div className="">
+			<form onSubmit={handleSubmit}>
+				<h2>Under a url you would like to shorten</h2>
+				<input value={urlInput} onChange={handleChange} />
+				<button>Shorten</button>
+			</form>
+
+			<div>
+				{Object.entries(urls).map(([shortUrl, fullUrl]) => {
+					return (
+						<div key={shortUrl}>
+							<div className="">
+								<a href={fullUrl} target="_blank" rel="noreferrer noopener">
+									{fullUrl}
+								</a>
+							</div>
+							<div className="">
+								<Link href={shortUrl} passHref>
+									<a target="_blank" rel="noreferrer noopener">
+										{shortUrl}
+									</a>
+								</Link>
+							</div>
+						</div>
+					);
+				})}
+			</div>
+		</div>
 	);
 }

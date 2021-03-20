@@ -1,14 +1,17 @@
-import React from "react";
-
-const Urls = ({ url }) => {
-	return <div>{url}</div>;
+const Urls = () => {
+	return null;
 };
 
-export const getServerSideProps = async ({ params }) => {
+export const getServerSideProps = async ({ params, res }) => {
 	const { url } = params;
-	return {
-		props: { url },
-	};
+	const { fullUrl } = await fetch(
+		`${process.env.NEXT_PUBLIC_APP_DOMAIN}api/urls?short=${url}`,
+	).then(res => res.json());
+
+	// Server side redirect
+	res.statusCode = 302;
+	res.setHeader("Location", fullUrl);
+	return { props: {} };
 };
 
 export default Urls;
