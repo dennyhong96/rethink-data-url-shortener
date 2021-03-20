@@ -1,29 +1,9 @@
-import { useEffect, useState } from "react";
 import Link from "next/link";
-import { addurl, listUrls } from "@lib/api";
+
+import useUrls from "@hooks/useUrls";
 
 export default function CustomPaginationActionsTable() {
-	const [urls, setUrls] = useState({});
-	const [urlInput, setUrlInput] = useState("");
-
-	useEffect(() => {
-		(async () => {
-			const data = await listUrls();
-			setUrls(data);
-		})();
-	}, []);
-
-	const handleChange = evt => {
-		setUrlInput(evt.target.value);
-	};
-
-	const handleSubmit = async evt => {
-		evt.preventDefault();
-		const newData = await addurl(urlInput);
-		if (!newData) return;
-		setUrls(newData);
-	};
-
+	const { urls, handleChange, handleSubmit, urlInput } = useUrls();
 	return (
 		<div>
 			<form onSubmit={handleSubmit}>

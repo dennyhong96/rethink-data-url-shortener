@@ -1,12 +1,10 @@
 import validUrl from "valid-url";
-import { toast } from "react-toastify";
 
 export const listUrls = async () => await fetch("/api/urls").then(res => res.json());
 
-export const addurl = async url => {
+export const addurl = async ({ url }) => {
 	if (!validUrl.isUri(url)) {
-		toast("Please enter a valid URL.");
-		return;
+		throw new Error("Please enter a valid URL.");
 	}
 
 	const data = await fetch("/api/urls", {
