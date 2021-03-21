@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 import { StyledLinkRow } from "@components/LinkRow/styles";
 import LinkRow from "@components/LinkRow";
 import { StyledLinkContainer } from "./styles";
@@ -32,3 +34,8 @@ const LinkContainer = ({ urls, handleDelete }) => {
 };
 
 export default LinkContainer;
+
+LinkContainer.propTypes = {
+	urls: PropTypes.object,
+	handleDelete: PropTypes.func,
+};

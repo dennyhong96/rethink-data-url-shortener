@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useCallback } from "react";
 import { toast } from "react-toastify";
+import PropTypes from "prop-types";
 
 import { IconCopy, IconDelete } from "@components/icons";
 import handleCopy from "@utils/handleCopy";
@@ -40,3 +41,9 @@ const LinkRow = ({ shortUrl, fullUrl, handleDelete }) => {
 };
 
 export default LinkRow;
+
+LinkRow.propTypes = {
+	shortUrl: PropTypes.string,
+	fullUrl: PropTypes.string,
+	handleDelete: PropTypes.func,
+};

@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 import { Graphic } from "@components/icons";
 import { StyledForm, StyledInput } from "./styles";
 
@@ -20,3 +22,9 @@ const Form = ({ handleSubmit, urlInput, handleChange }) => {
 };
 
 export default Form;
+
+Form.propTypes = {
+	handleSubmit: PropTypes.func,
+	handleChange: PropTypes.func,
+	urlInput: PropTypes.string,
+};

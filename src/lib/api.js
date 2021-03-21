@@ -30,6 +30,5 @@ export const getUrlByShortId = async ({ shortId }) => {
 		`${process.env.NEXT_PUBLIC_APP_DOMAIN}/api/urls?short=${shortId}`,
 	).then(res => res.json());
 
-	console.log(fullUrl);
 	return fullUrl;
 };
