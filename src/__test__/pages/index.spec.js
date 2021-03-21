@@ -25,7 +25,7 @@ describe("HomePage", () => {
 	test("Should render the main call to action button", async () => {
 		const { getByText } = render(<HomePage />);
 		const button = getByText("Shorten");
-		expect(button).toBeVisible();
+		expect(button).toBeInTheDocument();
 	});
 
 	test("Should render new record's short URL on button click.", async () => {
@@ -53,7 +53,7 @@ describe("HomePage", () => {
 	test("URL input should render correctly.", async () => {
 		const { getByTestId } = render(<HomePage />);
 		const input = getByTestId("url-input");
-		expect(input).toBeVisible();
+		expect(input).toBeInTheDocument();
 	});
 
 	test("URL input should work correctly.", async () => {

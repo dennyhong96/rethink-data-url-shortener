@@ -7,13 +7,13 @@ const APP_DOMAIN = process.env.NEXT_PUBLIC_APP_DOMAIN;
 
 export default async function handler(req, res) {
 	if (req.method === "GET") {
-		// Get full url by short id
+		// Handle getting full url by short id
 		if (req.query.short) {
 			const { short: shortId } = req.query;
 
 			const shortUrl = `${APP_DOMAIN}/u/${shortId}`;
 
-			const data = fs.readFileSync(path.resolve("_data", "urls.json"));
+			const data = fs.readFileSync(DB);
 			const urls = JSON.parse(data);
 
 			const shortUrlInDB = Object.keys(urls).find(key => key === shortUrl);
@@ -22,12 +22,20 @@ export default async function handler(req, res) {
 			return res.status(200).json({ fullUrl });
 		}
 
-		// List all urls
-		const data = fs.readFileSync(path.resolve("_data", "urls.json"));
+		// Handle listing all urls
+		const data = fs.readFileSync(DB);
+
+		// If JSON file is invalid, overwrite with empty object
+		try {
+			JSON.parse(data);
+		} catch (error) {
+			fs.writeFileSync(DB, JSON.stringify({}));
+		}
+
 		return res.status(200).json(data);
 	}
 
-	// Write a new url to DB
+	// Handle writing a new url to DB
 	if (req.method === "POST") {
 		const { url } = JSON.parse(req.body);
 
@@ -42,7 +50,7 @@ export default async function handler(req, res) {
 		return res.status(200).json(newData);
 	}
 
-	// Write a new url to DB
+	// Handle deleting a url from DB
 	if (req.method === "DELETE") {
 		const { shortUrl } = req.query;
 

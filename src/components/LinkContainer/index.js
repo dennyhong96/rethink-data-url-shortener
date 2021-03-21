@@ -17,7 +17,6 @@ const LinkContainer = ({ urls, handleDelete }) => {
 			</StyledLinkRow>
 
 			{/* URL Rows */}
-
 			{Object.entries(urls).map(([shortUrl, fullUrl]) => {
 				return (
 					<LinkRow
