@@ -1,32 +1,26 @@
+import styled from "styled-components";
 import useUrls from "@hooks/useUrls";
 import Form from "@components/Form";
-import { StyledLinkRow } from "@components/LinkRow/styles";
-import LinkRow from "@components/LinkRow";
-import { StyledLinkContainer, StyledMain } from "./_index.style";
+import LinkContainer from "@components/LinkContainer";
+
+const StyledMain = styled.main`
+	width: 90%;
+	max-width: 800px;
+	margin: 5rem auto;
+	background-color: #fff;
+	padding: 5rem;
+	border-radius: 2rem;
+	display: grid;
+	gap: 3rem;
+`;
 
 export default function CustomPaginationActionsTable() {
-	const { urls } = useUrls();
+	const { urls, handleChange, handleSubmit, urlInput } = useUrls();
 
 	return (
 		<StyledMain>
-			<Form />
-
-			<StyledLinkContainer>
-				{/* Headers */}
-				<StyledLinkRow>
-					<div>
-						<h3>Full URL</h3>
-					</div>
-					<div>
-						<h3>Shortened URL</h3>
-					</div>
-				</StyledLinkRow>
-
-				{/* URL Rows */}
-				{Object.entries(urls).map(([shortUrl, fullUrl]) => {
-					return <LinkRow key={shortUrl} fullUrl={fullUrl} shortUrl={shortUrl} />;
-				})}
-			</StyledLinkContainer>
+			<Form handleChange={handleChange} handleSubmit={handleSubmit} urlInput={urlInput} />
+			<LinkContainer urls={urls} />
 		</StyledMain>
 	);
 }

@@ -52,6 +52,8 @@ const GlobalStyles = createGlobalStyle`
     color: ${theme.colors.text};
     scrollbar-width: thin;
     scrollbar-color: ${theme.colors.textLightest} #f7f7f7;
+    background: linear-gradient(135deg, rgba(117,202,201,1) 30%, rgba(240,101,70,1) 90%);
+    min-height:100vh;
   }
 
   input {

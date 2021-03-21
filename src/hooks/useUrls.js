@@ -19,7 +19,6 @@ const useUrls = () => {
 	};
 
 	const handleSubmit = async evt => {
-		setUrlInput("");
 		evt.preventDefault();
 
 		const trimmedUrl = urlInput.endsWith("/") ? urlInput.slice(0, urlInput.length - 1) : urlInput;
@@ -33,6 +32,7 @@ const useUrls = () => {
 			if (!newData) return;
 
 			setUrls(newData);
+			setUrlInput("");
 		} catch (error) {
 			toast(error.message);
 		}

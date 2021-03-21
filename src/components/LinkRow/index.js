@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { IconCopy } from "@components/icons";
 import handleCopy from "@utils/handleCopy";
 import { StyledLinkRow } from "./styles";
+import { itemVariants } from "./motions";
 
 const LinkRow = ({ shortUrl, fullUrl }) => {
 	const copy = useCallback(shortUrl => {
@@ -13,7 +14,7 @@ const LinkRow = ({ shortUrl, fullUrl }) => {
 	}, []);
 
 	return (
-		<StyledLinkRow>
+		<StyledLinkRow variants={itemVariants}>
 			<div>
 				<a href={fullUrl} target="_blank" rel="noreferrer noopener">
 					{fullUrl}
