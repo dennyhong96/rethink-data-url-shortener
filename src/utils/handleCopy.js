@@ -11,6 +11,7 @@ const handleCopy = text => {
 	);
 };
 
+// Fallback if current browser does not support `navigator.clipboard`
 const handleCopyFallback = text => {
 	const textArea = document.createElement("textarea");
 	textArea.value = text;

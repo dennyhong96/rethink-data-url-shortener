@@ -5,6 +5,7 @@ export const StyledLinkRow = styled(motion.div)`
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	gap: 1rem;
+	align-items: center;
 
 	a {
 		word-break: break-all;

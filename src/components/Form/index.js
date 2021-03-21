@@ -13,7 +13,7 @@ const Form = ({ handleSubmit, urlInput, handleChange }) => {
 					data-testid="url-input"
 					value={urlInput}
 					onChange={handleChange}
-					placeholde="https://example.com"
+					placeholder="https://example.com"
 				/>
 				<button type="submit">Shorten</button>
 			</StyledInput>

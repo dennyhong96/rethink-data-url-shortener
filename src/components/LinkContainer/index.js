@@ -3,11 +3,11 @@ import PropTypes from "prop-types";
 import { StyledLinkRow } from "@components/LinkRow/styles";
 import LinkRow from "@components/LinkRow";
 import { StyledLinkContainer } from "./styles";
-import { containerVariants } from "./motions";
+import { containerMotions } from "./motions";
 
 const LinkContainer = ({ urls, handleDelete }) => {
 	return Object.entries(urls).length ? (
-		<StyledLinkContainer variants={containerVariants} initial="hidden" animate="show" exit="exit">
+		<StyledLinkContainer {...containerMotions}>
 			{/* Headers */}
 			<StyledLinkRow key={`header`}>
 				<div>

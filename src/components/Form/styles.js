@@ -8,7 +8,7 @@ export const StyledForm = styled.form`
 	text-align: center;
 
 	svg {
-		width: 50%;
+		width: 35%;
 		height: auto;
 		margin: 0 auto;
 	}

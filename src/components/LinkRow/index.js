@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 import { IconCopy, IconDelete } from "@components/icons";
 import handleCopy from "@utils/handleCopy";
 import { StyledLinkRow } from "./styles";
-import { itemVariants } from "./motions";
+import { itemMotions } from "./motions";
 
 const LinkRow = ({ shortUrl, fullUrl, handleDelete }) => {
 	const copy = useCallback(shortUrl => {
@@ -15,7 +15,7 @@ const LinkRow = ({ shortUrl, fullUrl, handleDelete }) => {
 	}, []);
 
 	return (
-		<StyledLinkRow variants={itemVariants}>
+		<StyledLinkRow {...itemMotions}>
 			<div>
 				<a href={fullUrl} target="_blank" rel="noreferrer noopener">
 					{fullUrl}

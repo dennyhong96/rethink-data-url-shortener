@@ -2,7 +2,7 @@ import Document, { Head, Html, Main, NextScript } from "next/document";
 import { ServerStyleSheet } from "styled-components";
 
 class MyDocument extends Document {
-	// Setup styled-components with server stylesheet
+	// Setup styled-components with server stylesheet to prevent on-load flicker
 	static async getInitialProps(ctx) {
 		const sheet = new ServerStyleSheet();
 		const originalRenderPage = ctx.renderPage;
