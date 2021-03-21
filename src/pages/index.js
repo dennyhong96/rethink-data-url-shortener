@@ -1,26 +1,30 @@
-import styled from "styled-components";
 import useUrls from "@hooks/useUrls";
 import Form from "@components/Form";
 import LinkContainer from "@components/LinkContainer";
 
-const StyledMain = styled.main`
-	width: 90%;
-	max-width: 800px;
-	margin: 5rem auto;
-	background-color: #fff;
-	padding: 5rem;
-	border-radius: 2rem;
-	display: grid;
-	gap: 3rem;
-`;
+import { StyledMain } from "./_index.style";
 
 export default function CustomPaginationActionsTable() {
-	const { urls, handleChange, handleSubmit, urlInput } = useUrls();
+	const { urls, handleChange, handleSubmit, urlInput, handleDelete } = useUrls();
 
 	return (
-		<StyledMain>
+		<StyledMain variants={mainVariants} initial="initial" animate="animate" exit="exit">
 			<Form handleChange={handleChange} handleSubmit={handleSubmit} urlInput={urlInput} />
-			<LinkContainer urls={urls} />
+			<LinkContainer urls={urls} handleDelete={handleDelete} />
 		</StyledMain>
 	);
 }
+
+export const mainVariants = {
+	initial: { opacity: 0, scale: 0.95, y: -15 },
+	animate: {
+		opacity: 1,
+		y: 0,
+		scale: 1,
+		transition: {
+			type: "spring",
+			duration: 1,
+		},
+	},
+	exit: { opacity: 0, scale: 0.95, y: 15 },
+};

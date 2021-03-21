@@ -3,7 +3,7 @@ import LinkRow from "@components/LinkRow";
 import { StyledLinkContainer } from "./styles";
 import { containerVariants } from "./motions";
 
-const LinkContainer = ({ urls }) => {
+const LinkContainer = ({ urls, handleDelete }) => {
 	return Object.entries(urls).length ? (
 		<StyledLinkContainer variants={containerVariants} initial="hidden" animate="show" exit="exit">
 			{/* Headers */}
@@ -24,9 +24,7 @@ const LinkContainer = ({ urls }) => {
 						key={shortUrl}
 						fullUrl={fullUrl}
 						shortUrl={shortUrl}
-						initial="hidden"
-						animate="show"
-						exit="exit"
+						handleDelete={handleDelete}
 					/>
 				);
 			})}

@@ -41,4 +41,20 @@ export default async function handler(req, res) {
 
 		return res.status(200).json(newData);
 	}
+
+	// Write a new url to DB
+	if (req.method === "DELETE") {
+		const { shortUrl } = req.query;
+
+		const data = JSON.parse(fs.readFileSync(DB));
+
+		const newData = Object.entries(data).reduce(
+			(acc, [key, val]) => (key === shortUrl ? acc : { ...acc, [key]: val }),
+			{},
+		);
+
+		fs.writeFileSync(DB, JSON.stringify(newData));
+
+		return res.status(200).json(newData);
+	}
 }

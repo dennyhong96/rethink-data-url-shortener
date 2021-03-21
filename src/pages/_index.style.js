@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
-export const StyledMain = styled.main`
+export const StyledMain = styled(motion.main)`
 	width: 90%;
 	max-width: 800px;
 	margin: 5rem auto;
@@ -9,11 +10,4 @@ export const StyledMain = styled.main`
 	border-radius: 2rem;
 	display: grid;
 	gap: 3rem;
-`;
-
-export const StyledLinkContainer = styled.div`
-	align-self: stretch;
-	width: 100%;
-	display: grid;
-	gap: 1rem;
 `;

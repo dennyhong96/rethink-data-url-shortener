@@ -3,7 +3,7 @@ const theme = {
 		text: "#4e4e4e",
 		textLight: "#828282",
 		textLightest: "#b8b8b8",
-		background: "#E5E5E5",
+		background: "#fefefe",
 		backgroundDark: "#222222",
 		highlight: "#75CAC9",
 		highlight2: "#f06546",

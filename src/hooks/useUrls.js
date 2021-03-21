@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
-import { addurl, listUrls } from "@lib/api";
+import { addurl, deleteUrlbyShortId, listUrls } from "@lib/api";
 
 const useUrls = () => {
 	const [urls, setUrls] = useState({});
@@ -38,11 +38,17 @@ const useUrls = () => {
 		}
 	};
 
+	const handleDelete = async ({ shortUrl }) => {
+		const newData = await deleteUrlbyShortId({ shortUrl });
+		setUrls(newData);
+	};
+
 	return {
 		urls,
+		urlInput,
 		handleChange,
 		handleSubmit,
-		urlInput,
+		handleDelete,
 	};
 };
 

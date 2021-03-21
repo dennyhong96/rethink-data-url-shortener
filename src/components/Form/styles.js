@@ -26,6 +26,7 @@ export const StyledInput = styled.div`
 		margin-right: 2rem;
 		border: 2px solid ${({ theme }) => theme.colors.highlight};
 		transition: ${({ theme }) => theme.transitions.normal};
+		background-color: ${({ theme }) => theme.colors.background};
 		&:focus {
 			transform: scale(1.025);
 		}

@@ -2,12 +2,12 @@ import Link from "next/link";
 import { useCallback } from "react";
 import { toast } from "react-toastify";
 
-import { IconCopy } from "@components/icons";
+import { IconCopy, IconDelete } from "@components/icons";
 import handleCopy from "@utils/handleCopy";
 import { StyledLinkRow } from "./styles";
 import { itemVariants } from "./motions";
 
-const LinkRow = ({ shortUrl, fullUrl }) => {
+const LinkRow = ({ shortUrl, fullUrl, handleDelete }) => {
 	const copy = useCallback(shortUrl => {
 		handleCopy(shortUrl);
 		toast("Short URL has been copied to your clip board.");
@@ -26,9 +26,14 @@ const LinkRow = ({ shortUrl, fullUrl }) => {
 						{shortUrl}
 					</a>
 				</Link>
-				<button onClick={copy.bind(this, shortUrl)}>
-					<IconCopy />
-				</button>
+				<div>
+					<button onClick={copy.bind(this, shortUrl)}>
+						<IconCopy />
+					</button>
+					<button onClick={() => handleDelete({ shortUrl })}>
+						<IconDelete />
+					</button>
+				</div>
 			</div>
 		</StyledLinkRow>
 	);

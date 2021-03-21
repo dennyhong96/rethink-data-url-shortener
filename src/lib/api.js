@@ -15,6 +15,16 @@ export const addurl = async ({ url }) => {
 	return data;
 };
 
+export const deleteUrlbyShortId = async ({ shortUrl }) => {
+	const data = await fetch(`/api/urls?shortUrl=${shortUrl}`, {
+		method: "DELETE",
+	}).then(res => res.json());
+
+	return data;
+};
+
+// getUrlByShortId is used in `getServerSideProps`
+// so need to pass full url for fetch to work
 export const getUrlByShortId = async ({ shortId }) => {
 	const { fullUrl } = await fetch(
 		`${process.env.NEXT_PUBLIC_APP_DOMAIN}/api/urls?short=${shortId}`,
