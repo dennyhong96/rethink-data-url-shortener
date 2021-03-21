@@ -1,12 +1,12 @@
+import { getUrlByShortId } from "@lib/api";
+
 const Urls = () => {
 	return null;
 };
 
 export const getServerSideProps = async ({ params, res }) => {
-	const { url } = params;
-	const { fullUrl } = await fetch(
-		`${process.env.NEXT_PUBLIC_APP_DOMAIN}api/urls?short=${url}`,
-	).then(res => res.json());
+	const { shortId } = params;
+	const fullUrl = await getUrlByShortId({ shortId });
 
 	// Server side redirect
 	res.statusCode = 302;

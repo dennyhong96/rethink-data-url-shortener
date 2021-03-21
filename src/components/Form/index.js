@@ -7,7 +7,12 @@ const Form = ({ handleSubmit, urlInput, handleChange }) => {
 			<Graphic />
 			<h1>Shorten Any Links</h1>
 			<StyledInput>
-				<input value={urlInput} onChange={handleChange} placeholde="https://example.com" />
+				<input
+					data-testid="url-input"
+					value={urlInput}
+					onChange={handleChange}
+					placeholde="https://example.com"
+				/>
 				<button type="submit">Shorten</button>
 			</StyledInput>
 		</StyledForm>

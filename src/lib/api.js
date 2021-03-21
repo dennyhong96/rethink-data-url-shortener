@@ -14,3 +14,12 @@ export const addurl = async ({ url }) => {
 
 	return data;
 };
+
+export const getUrlByShortId = async ({ shortId }) => {
+	const { fullUrl } = await fetch(
+		`${process.env.NEXT_PUBLIC_APP_DOMAIN}/api/urls?short=${shortId}`,
+	).then(res => res.json());
+
+	console.log(fullUrl);
+	return fullUrl;
+};
